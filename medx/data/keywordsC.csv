@@ -1,0 +1,11 @@
+Additional Directions,Weighting
+(?i)(G-tube tablet)|(PEG (EC)* tab)|crush|0[.][25]+|1/[24]|half|quarter|cut|break,1
+(?i)dissolve,1
+(?i)(tabs|tables|capsules|caps|puffs|inhalations|drops|patches|((combine|together|along|give) with)),1
+(?i)((may repeat)|(take additional))|([1-9]-[1-9]),1
+(?i)(AM|PM|morning|afternoon|noon|evening|bedtime|night|(before bed)|HS|before|(prior to)),1
+(?!)(breakfast|lunch|food|meal|(with meals)|supper|dinner|carb|eating|(EMPTY STOMACH)|AC),1
+(?i)(water|juice|soda|liquid|non-carbonated|beverage),1
+(?i)((as directed)|(adjust dose)|(hold if)|bridge|INR|(weight (gain|increase))|UTD),2
+(?i)(taper|decrease|increase|increasing|decreasing|wean|then),2
+(?i)(alternat|even|odd|(other days)),2
