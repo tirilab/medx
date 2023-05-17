@@ -13,11 +13,10 @@ setup(
     description="A python package to automate the calculation of Medication Regimen Complexity from EHR data.",  
     long_description=long_description,  
     long_description_content_type="text/markdown",  
-    url="https://github.com/pypa/sampleproject",  
+    url="https://github.com/tirilab/medx",  
     author="Louise Lu", 
     author_email="ylu106@jhu.edu", 
     # Classifiers help users find your project by categorizing it.
-    #
     # For a list of valid classifiers, see https://pypi.org/classifiers/
     classifiers=[  # Optional
         "Development Status :: 3 - Alpha",
@@ -36,7 +35,7 @@ setup(
     #   py_modules=["my_module"],
     #
     packages=find_packages(),  # Required
-    python_requires=">=3.7, <4",
+    python_requires=">=3.6, <4",
     # This field lists other packages that your project depends on to run.
     # Any package you put here will be installed by pip when your project is
     # installed, so they must be valid existing projects.
