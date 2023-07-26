@@ -139,8 +139,10 @@ def mrciCalc(ifilename, ofilename, doseCol = 'Dose', sigCol = 'SIG', ndcCol = 'N
                 print(i)
                 i = i + 1
                 continue
-       
-            count = count + 1
+            
+            # Temporarily offset for MC regarding human error in data collections
+            if data['Therapeutic Class'][i] != 'DIAGNOSTIC':
+                count = count + 1
 
             # calculating scoreA
             if route != 'Invalid':
@@ -198,7 +200,7 @@ def mrciCalc(ifilename, ofilename, doseCol = 'Dose', sigCol = 'SIG', ndcCol = 'N
         totalScore.append(scoresA[i] + scoresB[i] + scoresC[i])
 
     idenlist = list(data[idenCol].unique())
-    df = pd.DataFrame({idenCol : idenlist, 'med_count': counts, 'sec_a_score': scoresA, 'sec_b_score': scoresB, 'sec_c_score': scoresC, 'pmrci_score': totalScore})
+    df = pd.DataFrame({idenCol : idenlist, 'valid_med_count': counts, 'sec_a_score': scoresA, 'sec_b_score': scoresB, 'sec_c_score': scoresC, 'pmrci_score': totalScore})
     
     # write calculation results to ouput csv file
     write(df, ofilename)
@@ -375,7 +377,7 @@ def mrciCompa(ifilename, ofilename, doseCol = 'Dose', sigCol = 'SIG', ndcCol = '
         totalScore_after.append(scoresA_after[i] + scoresB_after[i] + scoresC_after[i])
 
     idenlist = list(data[idenCol].unique())
-    df = pd.DataFrame({idenCol : idenlist, 'med_count_t1': counts, 'sec_a_score_t1' : scoresA, 'sec_b_score_t1' : scoresB, 'sec_c_score_t1': scoresC, 'pmrci_score_t1': totalScore, 'med_count_t2': counts_after, 'sec_a_score_t2': scoresA_after, 'sec_b_score_t2': scoresB_after, 'sec_c_score_t2': scoresC_after, 'pmrci_score_t2': totalScore_after})
+    df = pd.DataFrame({idenCol : idenlist, 'valid_med_count_t1': counts, 'sec_a_score_t1' : scoresA, 'sec_b_score_t1' : scoresB, 'sec_c_score_t1': scoresC, 'pmrci_score_t1': totalScore, 'valid_med_count_t2': counts_after, 'sec_a_score_t2': scoresA_after, 'sec_b_score_t2': scoresB_after, 'sec_c_score_t2': scoresC_after, 'pmrci_score_t2': totalScore_after})
     
     # write calculation results to ouput csv file
     write(df, ofilename)
