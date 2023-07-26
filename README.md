@@ -3,7 +3,7 @@
 
 slides to the tutorial: https://livejohnshopkins-my.sharepoint.com/:p:/g/personal/ylu106_jh_edu/EUIkpgsQpMlJlmaEnXg8sKgBql_4nIVezXoZ74VmKnPkSw?e=VIylef
 
-- Usage Guide
+#### Usage Guide
 1. Download this repo using "Download ZIP" or command line
 
    `git clone https://github.com/tirilab/medx`
