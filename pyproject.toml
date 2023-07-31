@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "medx"
+version = "0.1"
+authors = [
+  { name="Louise Lu", email="ylu106@jhu.edu" },
+]
+description = "A python package to automate the calculation of Medication Regimen Complexity from EHR data"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/tirilab/medx"
+"Bug Tracker" = "https://github.com/tirilab/medx/issues"
