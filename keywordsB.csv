@@ -1,0 +1,24 @@
+Frequency,Weighting
+(?i)(?=.*(once daily)|nightly|((^((?!.*times .*).)*)daily)|((^((?!.*times .*).)*)every (day|night|evening|afternoon)))(?=.*((as needed)|PRN)),0.5
+(?i)(?=.*every (12|twelve)( \(twelve\))* hours)(?=.*((as needed)|PRN)),1.5
+(?i)((twice|((2|two)( \(two\))* times)) (daily|(a day)))(?=.*((as needed)|PRN)),1
+(?i)(?=.*every (8|eight)( \(eight\))* hours)(?=.*((as needed)|PRN)),2
+(?i)(?=.*(3|three) times (daily|(a day)))(?=.*((as needed)|PRN)),1.5
+(?i)(?=.*every (6|six)( \(six\))* hours)(?=.*((as needed)|PRN)),2.5
+(?i)(?=.*(4|four) times (daily|a day))(?=.*(as needed)|PRN),2
+(?i)(?=.*every (4|four)( \(four\))* hours)(?=.*(as needed)|PRN),3.5
+(?i)(?=.*every (2|two)( \(two\))*  hours)(?=.*(as needed)|PRN),6.5
+(?i)(?=.*oxygen)(?=.*(as needed)|PRN),1
+(?i)(?=.*oxygen)(?=.*continuous),3
+(?i)oxygen,2
+(?i)(twice|((2|two)( \(two\))* times)) (daily|a day),2
+(?i)(?=.*(once daily)|nightly|((^((?!.*times .*).)*)daily)|((^((?!.*times .*).)*)every (day|night|evening|afternoon))),1
+(?i)(3|three) times (daily|a day),3
+(?i)(4|four) times (daily|a day),4
+(?=.*(as needed)|PRN),0.5
+(?i)every (12|twelve)(\(twelve\))* hours,2.5
+(?i)every (8|eight)( \(eight\))*  hours,3.5
+(?i)every (6|six)( \(six\))* hours,4.5
+(?i)every (4|four)( \(four\))* hours,6.5
+(?i)every (2|two)( \(two\))* hours,12.5
+(?i)MWF|MONDAY|WEDNESDAY|FRIDAY|(once weekly)|((once|twice) [a-z1-9]+ week[s]*)|(every [.]+ month[s]*)|(every other day)|(on|after) dialysis days,2
