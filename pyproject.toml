@@ -1,16 +1,16 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "medx"
-version = "0.1"
+version = "0.1.1"
 authors = [
   { name="Louise Lu", email="ylu106@jhu.edu" },
 ]
 description = "A python package to automate the calculation of Medication Regimen Complexity from EHR data"
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.6"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",

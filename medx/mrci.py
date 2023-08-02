@@ -1,20 +1,19 @@
 import pandas as pd
-import numpy as np
 from collections import OrderedDict
 import re
-
+import os
 
 ########################  LOCAL ONLY FUNCTIONS ########################
 # Load med list data for calculation
 def load(ifilename):
     try:
-        data = pd.read_csv(ifilename)
+        df = pd.read_csv(ifilename)
+        df.fillna('', inplace = True)
+        return df
     except:
         print("Read File Error\n")
         exit
-        
-    data.fillna('', inplace = True)
-    return data
+    return None
 
 # Write mrci score to an output file
 def write(df, ofilename):
@@ -24,13 +23,13 @@ def write(df, ofilename):
         print("Write File Error\n")
         exit
 
-    return
+    return 1
 
 # Supporting function: Get dosage form and route for Score A
 def formSearch(data, i, drug, ndcCol = 'NDC Code', medCol = 'Medication Name'):
     # Search NDC code for dosage form if ndc exist
     if ndcCol in data.columns:
-
+ 
         code = data[ndcCol][i]
     
         if data[ndcCol].isnull()[i]:
@@ -64,33 +63,56 @@ def init():
 
     # initialize supporting keyword list for MRCI score A, B and C
     # score A dictionary {(form regex, route regex)): score}
-    keywordsA = pd.read_csv('data/keywordsA.csv')    
+    keywordsA = pd.DataFrame()
+    try:
+        keywordsA = pd.read_csv('medx/data/keywordsA.csv')    
+    except:
+        print("Read File Error: Keywords A\n")
+        exit
+
     scoreADict = OrderedDict()
     for _, row in keywordsA.iterrows():
         scoreADict[(row['Form'], row['Route'])] = row['Weighting']
 
     # score B dictionary {frequency regex: score}
-    keywordsB = pd.read_csv('data/keywordsB.csv', encoding= 'unicode_escape')
+    keywordsB = pd.DataFrame()
+    try:
+        keywordsB = pd.read_csv('medx/data/keywordsB.csv', encoding= 'unicode_escape')
+    except:
+        print("Read File Error: Keywords B\n")
+        exit
+
     scoreBDict = OrderedDict()
     for _,row in keywordsB.iterrows():
         scoreBDict[row['Frequency']] = row['Weighting']
 
     # score C dictionary {additional directions regex: score}
-    keywordsC = pd.read_csv('data/keywordsC.csv', encoding='unicode_escape')
+    keywordsC = pd.DataFrame()
+    try:
+        keywordsC = pd.read_csv('medx/data/keywordsC.csv', encoding='unicode_escape')
+    except:
+        print("Read File Error: Keywords C\n")
+        exit
+
     scoreCDict = OrderedDict()
     for _,row in keywordsC.iterrows():
         scoreCDict[row['Additional Directions']] = row['Weighting']
     
     # initialize supporting NDC directory
-    drug = pd.read_excel('data/ndc_database.xlsx')
-    drug.fillna('', inplace = True)
+    drug = pd.DataFrame()
+    try:
+        drug = pd.read_excel('medx/data/ndc_database.xlsx')
+        drug.fillna('', inplace = True)
+    except:
+        print("Read File Error: NDC\n")
+        exit
 
     return scoreADict, scoreBDict, scoreCDict, drug
 
 ############ GLOBAL ###################
 
 # Calculation of single time point MRCI
-def mrciCalc(ifilename, ofilename, doseCol = 'Dose', sigCol = 'SIG', ndcCol = 'NDC Code', medCol = 'Medication Name', idenCol = 'MRN'):
+def mrciCalc(ifilename, ofilename, doseCol = 'Dose', sigCol = 'SIG', ndcCol = 'NDC Code', medCol = 'Medication Name', idenCol = 'MRN', includeMC = True):
 
     # initialize supporting data for calculation
     [scoreADict, scoreBDict, scoreCDict, drug] = init()
@@ -114,7 +136,11 @@ def mrciCalc(ifilename, ofilename, doseCol = 'Dose', sigCol = 'SIG', ndcCol = 'N
     dictAb = scoreADict.copy()
     dictCb = scoreCDict.copy()
 
-    iden = data[idenCol][0]
+    try:
+        iden = data[idenCol][0]
+    except:
+        print("Invalid patient identifier.\n")
+        exit
 
     while i < data.shape[0]:
 
@@ -125,7 +151,7 @@ def mrciCalc(ifilename, ofilename, doseCol = 'Dose', sigCol = 'SIG', ndcCol = 'N
             if (data[doseCol].isnull()[i] and data[sigCol].isnull()[i]):
                 i = i + 1
                 continue
-            elif  'Therapeutic Class' in data.columns:
+            elif 'Therapeutic Class' in data.columns:
                 if data['Therapeutic Class'][i] == 'MISCELLANEOUS MEDICAL SUPPLIES, DEVICES, NON-DRUG' or data['Therapeutic Class'][i] == 'BIOLOGICALS':
                     i = i + 1
                     continue
@@ -136,7 +162,6 @@ def mrciCalc(ifilename, ofilename, doseCol = 'Dose', sigCol = 'SIG', ndcCol = 'N
                 sig = data[sigCol][i]
                 
             except:
-                print(i)
                 i = i + 1
                 continue
             
@@ -200,7 +225,10 @@ def mrciCalc(ifilename, ofilename, doseCol = 'Dose', sigCol = 'SIG', ndcCol = 'N
         totalScore.append(scoresA[i] + scoresB[i] + scoresC[i])
 
     idenlist = list(data[idenCol].unique())
-    df = pd.DataFrame({idenCol : idenlist, 'valid_med_count': counts, 'sec_a_score': scoresA, 'sec_b_score': scoresB, 'sec_c_score': scoresC, 'pmrci_score': totalScore})
+    if includeMC:
+        df = pd.DataFrame({idenCol : idenlist, 'valid_med_count': counts, 'sec_a_score': scoresA, 'sec_b_score': scoresB, 'sec_c_score': scoresC, 'pmrci_score': totalScore})
+    else:
+        df = pd.DataFrame({idenCol : idenlist, 'sec_a_score': scoresA, 'sec_b_score': scoresB, 'sec_c_score': scoresC, 'pmrci_score': totalScore})
     
     # write calculation results to ouput csv file
     write(df, ofilename)
@@ -208,7 +236,7 @@ def mrciCalc(ifilename, ofilename, doseCol = 'Dose', sigCol = 'SIG', ndcCol = 'N
     return 1
 
 # Calculation of multiple time points (2 for now)
-def mrciCompa(ifilename, ofilename, doseCol = 'Dose', sigCol = 'SIG', ndcCol = 'NDC Code', medCol = 'Medication Name', idenCol = 'MRN', timeCol = 'Time_period', time1 = "current at enrollment"):
+def mrciCompa(ifilename, ofilename, doseCol = 'Dose', sigCol = 'SIG', ndcCol = 'NDC Code', medCol = 'Medication Name', idenCol = 'MRN', timeCol = 'Time_period', time1 = "current at enrollment", includeMC = True):
 
     # initialize supporting data for calculation
     [scoreADict, scoreBDict, scoreCDict, drug] = init()
@@ -241,7 +269,11 @@ def mrciCompa(ifilename, ofilename, doseCol = 'Dose', sigCol = 'SIG', ndcCol = '
     dictCb = scoreCDict.copy()
     dictC3mo = scoreCDict.copy()
 
-    iden = data[idenCol][0]
+    try:
+        iden = data[idenCol][0]
+    except:
+        print("Invalid patient identifier.\n")
+        exit
 
     while i < data.shape[0]:
 
@@ -377,8 +409,12 @@ def mrciCompa(ifilename, ofilename, doseCol = 'Dose', sigCol = 'SIG', ndcCol = '
         totalScore_after.append(scoresA_after[i] + scoresB_after[i] + scoresC_after[i])
 
     idenlist = list(data[idenCol].unique())
-    df = pd.DataFrame({idenCol : idenlist, 'valid_med_count_t1': counts, 'sec_a_score_t1' : scoresA, 'sec_b_score_t1' : scoresB, 'sec_c_score_t1': scoresC, 'pmrci_score_t1': totalScore, 'valid_med_count_t2': counts_after, 'sec_a_score_t2': scoresA_after, 'sec_b_score_t2': scoresB_after, 'sec_c_score_t2': scoresC_after, 'pmrci_score_t2': totalScore_after})
-    
+
+    if includeMC:
+        df = pd.DataFrame({idenCol : idenlist, 'valid_med_count_t1': counts, 'sec_a_score_t1' : scoresA, 'sec_b_score_t1' : scoresB, 'sec_c_score_t1': scoresC, 'pmrci_score_t1': totalScore, 'valid_med_count_t2': counts_after, 'sec_a_score_t2': scoresA_after, 'sec_b_score_t2': scoresB_after, 'sec_c_score_t2': scoresC_after, 'pmrci_score_t2': totalScore_after})
+    else:
+        df = pd.DataFrame({idenCol : idenlist, 'sec_a_score_t1' : scoresA, 'sec_b_score_t1' : scoresB, 'sec_c_score_t1': scoresC, 'pmrci_score_t1': totalScore, 'sec_a_score_t2': scoresA_after, 'sec_b_score_t2': scoresB_after, 'sec_c_score_t2': scoresC_after, 'pmrci_score_t2': totalScore_after})
+
     # write calculation results to ouput csv file
     write(df, ofilename)
 
