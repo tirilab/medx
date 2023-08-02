@@ -10,6 +10,7 @@ __pycache__/*
 .idea/
 .vscode/
 .vimtags
+.empty/
 
 # Test output
 tests/*.csv
