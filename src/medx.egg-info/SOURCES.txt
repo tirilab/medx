@@ -1,0 +1,13 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+pyproject.toml
+setup.cfg
+src/medx/__init__.py
+src/medx/mrci.py
+src/medx.egg-info/PKG-INFO
+src/medx.egg-info/SOURCES.txt
+src/medx.egg-info/dependency_links.txt
+src/medx.egg-info/requires.txt
+src/medx.egg-info/top_level.txt
+tests/test1.py
