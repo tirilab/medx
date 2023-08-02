@@ -1,7 +1,6 @@
 import pandas as pd
 from collections import OrderedDict
 import re
-import os
 
 ########################  LOCAL ONLY FUNCTIONS ########################
 # Load med list data for calculation
