@@ -15,14 +15,15 @@ Developed by TIRI Lab @ JHU
 
 1. Download this repo using "Download ZIP" or command line
 
-   `git clone https://github.com/tirilab/medx`
+   `git clone https://github.com/tirilab/medx.git`
    
-2. Unzip the download file if needed. Go to the project's root directory, run the terminal command below to install the package in the current working directory (.) in editable mode (-e)​
+2. Unzip the download file if needed. 
+3. Go to the project's root directory, run the terminal command below to install the package in the current working directory (.) in editable mode (-e)​
    
    `pip install -e .​`
 
-3. Install dependencies if necessary
-4. The package is ready to go. Test with the sample data “sample_med.csv” ​using function `medx.mrciCalc()` and `medx.mrciCompa()` in your codespace.
+4. Install dependencies if necessary
+5. The package is ready to go. Test with the sample data “tests/sample_data/sample_med.csv” in your own codes or using the sample test "tests/test1.py" we provided.
 
 ### Alternative Usage
 
