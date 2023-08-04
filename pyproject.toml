@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "medx"
-version = "0.1.2"
+version = "0.1.4"
 authors = [
   { name="Louise Lu", email="ylu106@jhu.edu" },
 ]
@@ -25,7 +25,7 @@ namespaces = true
 where = ["src"]
 
 [tool.setuptools.package-data]
-"medx.data" = ["*.csv", ".xlsx"]
+"medx.data" = ["*.csv"]
 
 
 [project.urls]
