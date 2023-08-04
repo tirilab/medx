@@ -20,6 +20,14 @@ dependencies = [
   'pandas'
 ]
 
+[tool.setuptools.packages.find]
+namespaces = true
+where = ["src"]
+
+[tool.setuptools.package-data]
+"medx.data" = ["*.csv", ".xlsx"]
+
+
 [project.urls]
 "Homepage" = "https://github.com/tirilab/medx"
 "Bug Tracker" = "https://github.com/tirilab/medx/issues"

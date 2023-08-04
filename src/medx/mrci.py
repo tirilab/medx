@@ -1,6 +1,7 @@
 import pandas as pd
 from collections import OrderedDict
 import re
+import os
 
 ########################  LOCAL ONLY FUNCTIONS ########################
 # Load med list data for calculation
@@ -60,11 +61,16 @@ def formSearch(data, i, drug, ndcCol = 'NDC Code', medCol = 'Medication Name'):
 # Initialize supporting data for Medication Complexity Calculation
 def init():
 
+    # use os path to satisfy different env
+    src_path = os.path.dirname(__file__)
+
     # initialize supporting keyword list for MRCI score A, B and C
     # score A dictionary {(form regex, route regex)): score}
     keywordsA = pd.DataFrame()
     try:
-        keywordsA = pd.read_csv('src/medx/data/keywordsA.csv')    
+        # TODO
+        data_pathA = os.path.join(src_path, 'data', 'keywordsA.csv')
+        keywordsA = pd.read_csv(data_pathA)
     except:
         print("Read File Error: Keywords A\n")
         exit
@@ -76,7 +82,8 @@ def init():
     # score B dictionary {frequency regex: score}
     keywordsB = pd.DataFrame()
     try:
-        keywordsB = pd.read_csv('src/medx/data/keywordsB.csv', encoding= 'unicode_escape')
+        data_pathB = os.path.join(src_path, 'data', 'keywordsB.csv')
+        keywordsB = pd.read_csv(data_pathB, encoding= 'unicode_escape')
     except:
         print("Read File Error: Keywords B\n")
         exit
@@ -88,7 +95,8 @@ def init():
     # score C dictionary {additional directions regex: score}
     keywordsC = pd.DataFrame()
     try:
-        keywordsC = pd.read_csv('src/medx/data/keywordsC.csv', encoding='unicode_escape')
+        data_pathC = os.path.join(src_path, 'data', 'keywordsC.csv')
+        keywordsC = pd.read_csv(data_pathC, encoding= 'unicode_escape')
     except:
         print("Read File Error: Keywords C\n")
         exit
@@ -100,7 +108,8 @@ def init():
     # initialize supporting NDC directory
     drug = pd.DataFrame()
     try:
-        drug = pd.read_excel('src/medx/data/ndc_database.xlsx')
+        drug_path = os.path.join(src_path, 'data', 'ndc_database.xlsx')
+        drug = pd.read_excel(drug_path)
         drug.fillna('', inplace = True)
     except:
         print("Read File Error: NDC\n")
@@ -135,12 +144,18 @@ def mrciCalc(ifilename, ofilename, doseCol = 'Dose', sigCol = 'SIG', ndcCol = 'N
     dictAb = scoreADict.copy()
     dictCb = scoreCDict.copy()
 
+    # make sure patient identifier exist
     try:
         iden = data[idenCol][0]
     except:
         print("Invalid patient identifier.\n")
         exit
 
+    # Check if data is valid
+    if data.empty:
+        print("Invalid data.\n")
+        exit
+    
     while i < data.shape[0]:
 
         if iden == data[idenCol][i]:
@@ -272,6 +287,11 @@ def mrciCompa(ifilename, ofilename, doseCol = 'Dose', sigCol = 'SIG', ndcCol = '
         iden = data[idenCol][0]
     except:
         print("Invalid patient identifier.\n")
+        exit
+
+    # Check if data is valid
+    if data.empty:
+        print("Invalid data.\n")
         exit
 
     while i < data.shape[0]:
