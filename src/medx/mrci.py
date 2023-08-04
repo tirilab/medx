@@ -108,13 +108,14 @@ def init():
     # initialize supporting NDC directory
     drug = pd.DataFrame()
     try:
-        drug_path = os.path.join(src_path, 'data', 'ndc_database.xlsx')
-        drug = pd.read_excel(drug_path)
+        # drug_path = os.path.join(src_path, 'data', 'ndc_database.xlsx')
+        drug_path = os.path.join(src_path, 'data', 'ndc_database.csv')
+        drug = pd.read_csv(drug_path)
         drug.fillna('', inplace = True)
     except:
         print("Read File Error: NDC\n")
         exit
-
+    
     return scoreADict, scoreBDict, scoreCDict, drug
 
 ############ GLOBAL ###################

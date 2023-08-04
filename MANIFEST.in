@@ -1,2 +1,1 @@
-include medx/*.csv
-include medx/*.xlsx
+include src/medx/data/*.csv
