@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "medx"
-version = "0.1.1"
+version = "0.1.4"
 authors = [
   { name="Louise Lu", email="ylu106@jhu.edu" },
 ]
@@ -16,6 +16,17 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+dependencies = [
+  'pandas'
+]
+
+[tool.setuptools.packages.find]
+namespaces = true
+where = ["src"]
+
+[tool.setuptools.package-data]
+"medx.data" = ["*.csv"]
+
 
 [project.urls]
 "Homepage" = "https://github.com/tirilab/medx"
