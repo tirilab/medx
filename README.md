@@ -1,5 +1,4 @@
 # MedX: Medication Regimen Complexity Calculation Python Package
-Developed by TIRI Lab @ JHU
 
 #### Overview
 
