@@ -1,34 +1,38 @@
 # MedX: Medication Regimen Complexity Calculation Python Package
-Developed by TIRI Lab @ JHU
 
-#### Features
+### Overview
 
-| Feature   Name                               | Description                                                                      | Input(s)                                                                                                                                                                                                                             | Output(s)                                                |
-|----------------------------------------------|----------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|
-| Load File                                    | Read in data file with modifiable column name                                    | A file name for the input medication records list, a column name for patient identifier (optionally), a column name for medication name (optionally), a   column name for SIG (optionally), a column name for NDC code (optionally)  | An indicator showing whether the file loads successfully |
-| Write file                                   | Write MRCI output to an output file with modifiable column name                  | A file name for the output file, a column name for patient identifier (optionally)                                                                                                                                                   | An indicator showing whether the file writes successfull |
-| Customize Decision Keywords                  | Make modification of decision keyword list                                       | A file name for the  data file containing   the updated keywords, identifier of list need to be modified (A/B/C)                                                                                                                     | None                                                     |
-| Calculate MRCI and MC (Single time point)    | Calculate MRCI score and MC from the data read in                                | Input data of medication list                                                                                                                                                                                                        | MRCI scores and MC at one time point                     |
-| Calculate MRCI and MC (Multiple time points) | Calculate MRCI score and MC from the data read in when there are time identifier | Input data of medication list, column name for the time identifier                                                                                                                                                                   | MRCI scores and MC at multiple time points               |
+[MedX](https://github.com/tirilab/medx) is a python package developed by Translational Informatics @ Johns Hopkins University.
 
-#### Usage Guide
+Understanding medication regimen complexity is important to understand what patients may benefit from pharmacist interventions.
+Medication Regimen Complexity Index (MRCI), a 65-item tool to quantify the complexity by incorporating the number, dosage form, frequency, and special administration instructions of prescription medicines, provides a more nuanced way of assessing complexity. 
 
-1. Download this repo using "Download ZIP" or command line
+MedX package aims to automate the calculation of MRCI and Medication Count from raw EHR data. 
+A sample of EHR pseudodata can be found [here](https://github.com/tirilab/medx/blob/release/1.0/tests/sample_data/sample_med.csv).
 
-   `git clone https://github.com/tirilab/medx.git`
-   
-2. Unzip the download file if needed. 
-3. Go to the project's root directory, run the terminal command below to install the package in the current working directory (.) in editable mode (-e)​
-   
-   `pip install -e .​`
+### Dependencies and Requiorements of Medx:
+* Python >= 3.6
+* Pandas
 
-4. Install dependencies if necessary
-5. The package is ready to go. Test with the sample data “tests/sample_data/sample_med.csv” in your own codes or using the sample test "tests/test1.py" we provided.
+### Installation and Usage
 
-### Alternative Usage
+Check [here](https://medx.readthedocs.io/en/latest/usage.html#installation) for installation and usage documentations.
 
-1. Install package using
-   `pip install -i https://test.pypi.org/simple/ medx==1.0`
+### Issue
+Submit bug reports and feature requests to [MedX bug tacker](https://github.com/tirilab/medx/issues).
 
-### Relevant Document
-- Student Paper "An Automated Strategy to Calculate Medication Regimen Complexity" accepted to American Medical Informatics Association (AMIA) 2023 Symposium.
+### License
+The MedX package was written by Louise Lu [ylu106@jhu.edu].
+
+MedX is licensed under the [MIT License](https://github.com/tirilab/medx/blob/main/LICENSE.txt).
+
+### Reference
+* Student Paper "An Automated Strategy to Calculate Medication Regimen Complexity" accepted to American Medical Informatics Association (AMIA) 2023 Symposium.
+
+* George J, Phun Y-T, Bailey MJ, Kong DC, Stewart K. Development and validation of the medication regimen complexity index. Annals of Pharmacotherapy. 2004;38(9):1369–76. doi:10.1345/aph.1d479 
+
+* Green A. Align: Aligning Medications with What Matters Most, a pharmacist-led deprescribing intervention. 2022Jun21; Available from: https://beta.clinicaltrials.gov/study/NCT04938648 
+
+The development of MedX consulted the following tutorial pages:
+* [Packaging Python Projects](https://packaging.python.org/en/latest/tutorials/packaging-projects/)
+* [Read the Docs tutorial](https://docs.readthedocs.io/en/stable/tutorial/)
