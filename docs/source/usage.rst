@@ -13,7 +13,7 @@ To use MedX, first install it using pip:
    (.venv) $ pip install -i https://test.pypi.org/simple/ medx
 
 Alternative way to install it is to download or clone directly from the 
-`GitHub Home Page <https://github.com/tirilab/medx>`.
+`GitHub Home Page <https://github.com/tirilab/medx>`_.
 
 Install required Python versions and dependencies if needed, and run the following command in its root directory:
 .. code-block:: console
