@@ -11,11 +11,11 @@ Medication Regimen Complexity Index (MRCI), a 65-item tool to quantify the compl
 MedX package aims to automate the calculation of MRCI and Medication Count from raw EHR data. 
 A sample of EHR pseudodata can be found [here](https://github.com/tirilab/medx/blob/release/1.0/tests/sample_data/sample_med.csv).
 
-#### Dependencies and Requiorements of Medx:
+### Dependencies and Requiorements of Medx:
 * Python >= 3.6
 * Pandas
 
-#### Installation and Usage
+### Installation and Usage
 
 Check [here](https://medx.readthedocs.io/en/latest/usage.html#installation) for installation and usage documentations.
 
@@ -23,7 +23,7 @@ Check [here](https://medx.readthedocs.io/en/latest/usage.html#installation) for 
 Submit bug reports and feature requests to [MedX bug tacker](https://github.com/tirilab/medx/issues).
 
 ### License
-The MedX module was written by Louise Lu [ylu106@jhu.edu].
+The MedX package was written by Louise Lu [ylu106@jhu.edu].
 
 MedX is licensed under the [MIT License](https://github.com/tirilab/medx/blob/main/LICENSE.txt).
 
@@ -34,7 +34,6 @@ MedX is licensed under the [MIT License](https://github.com/tirilab/medx/blob/ma
 
 * Green A. Align: Aligning Medications with What Matters Most, a pharmacist-led deprescribing intervention. 2022Jun21 [cited 2023Mar21]; Available from: https://beta.clinicaltrials.gov/study/NCT04938648 
 
-The development of MedX consulted the following tutorial page:
+The development of MedX consulted the following tutorial pages:
 * [Packaging Python Projects](https://packaging.python.org/en/latest/tutorials/packaging-projects/)
 * [Read the Docs tutorial](https://docs.readthedocs.io/en/stable/tutorial/)
-* 
