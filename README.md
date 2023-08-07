@@ -1,6 +1,6 @@
 # MedX: Medication Regimen Complexity Calculation Python Package
 
-#### Overview
+### Overview
 
 [MedX](https://github.com/tirilab/medx) is a python package developed by Translational Informatics @ Johns Hopkins University.
 
@@ -31,7 +31,7 @@ MedX is licensed under the [MIT License](https://github.com/tirilab/medx/blob/ma
 
 * George J, Phun Y-T, Bailey MJ, Kong DC, Stewart K. Development and validation of the medication regimen complexity index. Annals of Pharmacotherapy. 2004;38(9):1369–76. doi:10.1345/aph.1d479 
 
-* Green A. Align: Aligning Medications with What Matters Most, a pharmacist-led deprescribing intervention. 2022Jun21 [cited 2023Mar21]; Available from: https://beta.clinicaltrials.gov/study/NCT04938648 
+* Green A. Align: Aligning Medications with What Matters Most, a pharmacist-led deprescribing intervention. 2022Jun21; Available from: https://beta.clinicaltrials.gov/study/NCT04938648 
 
 The development of MedX consulted the following tutorial pages:
 * [Packaging Python Projects](https://packaging.python.org/en/latest/tutorials/packaging-projects/)
