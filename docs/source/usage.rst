@@ -10,7 +10,7 @@ To use MedX, first install it using pip:
 
 .. code-block:: console
 
-   (.venv) $ pip install -i https://test.pypi.org/simple/ medx
+   (.venv) $ pip install -i https://test.pypi.org/simple/ medx==1.0.1
 
 Alternative way to install it is to download or clone directly from the 
 `GitHub Home Page <https://github.com/tirilab/medx>`_.
@@ -63,7 +63,6 @@ For example:
 >>> medx.mrciCalc('sample_med.csv', 'tests/result.csv')
 1
 
-
 Comparing Medication Regimen Complexity at 2 time points
 ----------------
 
@@ -112,7 +111,6 @@ For example:
 >>> import medx
 >>> medx.medx.mrciCompa('sample_med.csv', 'tests/result.csv', timeCol = "Time", time1 = "three months after")
 1
-
 
 Load and Write data
 ----------------
