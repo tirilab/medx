@@ -12,26 +12,24 @@ The study team pilot-tested MedX with data collected in the ALIGN (Aligning Medi
 
 A sample of EHR pseudodata can be found [here](https://github.com/tirilab/medx/blob/release/1.0/tests/sample_data/sample_med.csv).
 
-### Dependencies and Requiorements of Medx:
+### Dependencies and Requirements of Medx:
+
 * Python >= 3.6
 * Pandas
 
 ### Installation and Usage
 
-Check [here](https://medx.readthedocs.io/en/latest/usage.html#installation) for installation and usage documentations.
+Check [here](https://medx.readthedocs.io/en/latest/usage.html#installation) for installation and usage documentation.
 
 ### Issue
-Submit bug reports and feature requests to [MedX bug tacker](https://github.com/tirilab/medx/issues).
+Submit bug reports and feature requests to [MedX bug tracker](https://github.com/tirilab/medx/issues).
 
 ### License and Citation
-The MedX package was written by Louise Lu [ylu106@jhu.edu].
+The MedX package was written by Louise Lu [ylu106@jhu.edu] and can be used as-is under the [MIT License](https://github.com/tirilab/medx/blob/main/LICENSE.txt) attached to the repository.
 
-MedX is licensed under the [MIT License](https://github.com/tirilab/medx/blob/main/LICENSE.txt).
-
-### Reference
+Please cite this article if using this package:
+> Lu Y, Green AR, Quiles R, Taylor CO. An Automated Strategy to Calculate Medication Regimen Complexity. AMIA Annual Symposium 2023. (accepted)
 
 1. George J, Phun Y-T, Bailey MJ, Kong DC, Stewart K. Development and validation of the medication regimen complexity index. Annals of Pharmacotherapy. 2004;38(9):1369–76. doi:10.1345/aph.1d479 
 
 2. Green A. Align: Aligning Medications with What Matters Most, a pharmacist-led deprescribing intervention. 2022Jun21; Available from: https://beta.clinicaltrials.gov/study/NCT04938648 
-
-3. Student Paper "An Automated Strategy to Calculate Medication Regimen Complexity" accepted to American Medical Informatics Association (AMIA) 2023 Symposium.
