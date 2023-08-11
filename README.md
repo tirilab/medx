@@ -12,16 +12,17 @@ The study team pilot-tested MedX with data collected in the ALIGN (Aligning Medi
 
 A sample of EHR pseudodata can be found [here](https://github.com/tirilab/medx/blob/release/1.0/tests/sample_data/sample_med.csv).
 
-### Dependencies and Requiorements of Medx:
+### Dependencies and Requirements of Medx:
+
 * Python >= 3.6
 * Pandas
 
 ### Installation and Usage
 
-Check [here](https://medx.readthedocs.io/en/latest/usage.html#installation) for installation and usage documentations.
+Check [here](https://medx.readthedocs.io/en/latest/usage.html#installation) for installation and usage documentation.
 
 ### Issue
-Submit bug reports and feature requests to [MedX bug tacker](https://github.com/tirilab/medx/issues).
+Submit bug reports and feature requests to [MedX bug tracker](https://github.com/tirilab/medx/issues).
 
 ### License and Citation
 The MedX package was written by Louise Lu [ylu106@jhu.edu] and can be used as-is under the [MIT License](https://github.com/tirilab/medx/blob/main/LICENSE.txt) attached to the repository.
