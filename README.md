@@ -2,11 +2,11 @@
 
 ### Overview
 
-[MedX](https://github.com/tirilab/medx) is a Python package intended to transform longitudinal prescription data from the electronic health record into patient-level medication regimen complexity metrics.
+[MedX](https://github.com/tirilab/medx) is a Python package intended to transform longitudinal prescription data from the electronic health record (EHR) into patient-level medication regimen complexity metrics.
 
 Understanding medication regimen complexity is important to understand what patients may benefit from pharmacist interventions.
 
-MedX can take patient-level electronic health record (EHR) data as input and then for each patient, calculate two medication complexity metrics: Medication Regimen Complexity Index (MRCI) score[1] and Medication Count.
+MedX can take patient-level EHR data as input and then for each patient, calculate two medication complexity metrics: Medication Regimen Complexity Index (MRCI) score[1] and Medication Count.
 
 The study team pilot-tested MedX with data collected in the ALIGN (Aligning Medications with What Matters Most) study.[2]
 
