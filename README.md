@@ -31,7 +31,7 @@ Submit bug reports and feature requests to [MedX bug tracker](https://github.com
 2. Green A. Align: Aligning Medications with What Matters Most, a pharmacist-led deprescribing intervention. 2022Jun21; Available from: https://beta.clinicaltrials.gov/study/NCT04938648 
 
 ### License and Citation
-The MedX package was written by Louise Lu [ylu106@jhu.edu] and can be used as-is under the [MIT License](https://github.com/tirilab/medx/blob/main/LICENSE.txt) attached to the repository.
+The MedX package was written by Louise Lu [ylu106@alumni.jh.edu] and can be used as-is under the [MIT License](https://github.com/tirilab/medx/blob/main/LICENSE.txt) attached to the repository.
 
 Please cite this article if using this package:
-> Lu Y, Green AR, Quiles R, Taylor CO. An Automated Strategy to Calculate Medication Regimen Complexity. AMIA Annual Symposium 2023. (accepted)
+> Lu Y, Green AR, Quiles R, Taylor CO. An Automated Strategy to Calculate Medication Regimen Complexity. In AMIA Annual Symposium Proceedings 2023 (Vol. 2023, p. 1077). [link](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10785893/)
